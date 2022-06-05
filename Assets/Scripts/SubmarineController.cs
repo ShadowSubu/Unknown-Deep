@@ -26,28 +26,28 @@ public class SubmarineController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 movement = new Vector3(0f, verticalInput, horizontolInput).normalized;
 
-        Vector3 moveDir;
-        float targetAngle = Mathf.Atan2(movement.z, movement.y) * Mathf.Rad2Deg;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.x, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(angle, 0f, 0f);
+        //Vector3 moveDir;
+        //float targetAngle = Mathf.Atan2(movement.z, movement.y) * Mathf.Rad2Deg;
+        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.x, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+        //transform.rotation = Quaternion.Euler(angle, 0f, 0f);
 
-        moveDir = Quaternion.Euler(targetAngle, 0f, 0f) *Vector3.one;
+        //moveDir = Quaternion.Euler(targetAngle, 0f, 0f) *Vector3.one;
 
         if (Input.GetKey(KeyCode.D))
         {
-            //transform.rotation = Quaternion.Euler(forward);
-            //currentSpeed = subSpeed;
+            transform.rotation = Quaternion.Euler(forward);
+            currentSpeed = subSpeed;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            //transform.rotation = Quaternion.Euler(backward);
-            //currentSpeed = subSpeed;
+            transform.rotation = Quaternion.Euler(backward);
+            currentSpeed = subSpeed;
         }
         else
         {
             currentSpeed = Mathf.Lerp(currentSpeed, 0, 0.02f);
         }
         currentSpeed = Mathf.Clamp(currentSpeed, -subSpeed, subSpeed);
-        rb.velocity = moveDir * subSpeed;
+        rb.velocity = movement * subSpeed;
     }
 }
