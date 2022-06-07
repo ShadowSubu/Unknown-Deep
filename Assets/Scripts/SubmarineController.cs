@@ -64,6 +64,7 @@ public class SubmarineController : MonoBehaviour
         {
             currentSpeed = Mathf.Lerp(currentSpeed, 0, 0.01f);
         }
+        transform.position = new Vector3(6.64f, transform.position.y, transform.position.z);
         currentSpeed = Mathf.Clamp(currentSpeed, 0, subSpeed);
         rb.velocity = movement * currentSpeed;
     }
