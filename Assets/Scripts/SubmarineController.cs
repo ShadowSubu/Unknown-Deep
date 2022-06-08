@@ -9,7 +9,11 @@ public class SubmarineController : MonoBehaviour
     public float subSpeed;
     public float turnSpeed;
     public float rotationSpeed;
+    public float stabilizationSpeed;
+    float turbineSpeed;
     private float currentSpeed;
+
+    [SerializeField] Transform turbineRing;
 
     private static Vector3 forward = new Vector3(0f,0f,0f);
     private static Vector3 backward = new Vector3(0f,179f,0f);
@@ -64,8 +68,14 @@ public class SubmarineController : MonoBehaviour
         {
             currentSpeed = Mathf.Lerp(currentSpeed, 0, 0.01f);
         }
+
         transform.position = new Vector3(6.64f, transform.position.y, transform.position.z);
         currentSpeed = Mathf.Clamp(currentSpeed, 0, subSpeed);
         rb.velocity = movement * currentSpeed;
+
+        turbineSpeed = Mathf.Clamp(turbineSpeed, 2f, currentSpeed);
+        turbineRing.Rotate(Vector3.forward, currentSpeed);
+
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.Euler(new Vector3(0, rb.rotation.eulerAngles.y, 0)), stabilizationSpeed));
     }
 }

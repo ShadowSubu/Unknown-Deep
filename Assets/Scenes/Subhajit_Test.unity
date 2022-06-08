@@ -498,6 +498,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 882605990, guid: f59c3f05e493e3d46b67c3bfed22ea49, type: 3}
+      propertyPath: turbineRing
+      value: 
+      objectReference: {fileID: 2016645882}
+    - target: {fileID: 882605990, guid: f59c3f05e493e3d46b67c3bfed22ea49, type: 3}
+      propertyPath: stabilizationSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2500453217880129631, guid: f59c3f05e493e3d46b67c3bfed22ea49,
         type: 3}
       propertyPath: m_Name
@@ -612,7 +620,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782427, y: 1}
+    m_SensorSize: {x: 1.7797102, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -732,6 +740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2016645882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3108975207377508716, guid: f59c3f05e493e3d46b67c3bfed22ea49,
+    type: 3}
+  m_PrefabInstance: {fileID: 882605988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450652405260093
 Transform:
   m_ObjectHideFlags: 0
