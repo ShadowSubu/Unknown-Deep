@@ -83,7 +83,7 @@ public class SubmarineController : MonoBehaviour
         rb.velocity = movement * currentSpeed;
 
         turbineSpeed = Mathf.Clamp(turbineSpeed, 2f, currentSpeed);
-        turbineRing.Rotate(Vector3.forward, currentSpeed);
+        turbineRing.Rotate(Vector3.forward, currentSpeed / 4);
 
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.Euler(new Vector3(0, rb.rotation.eulerAngles.y, 0)), stabilizationSpeed));
     }
