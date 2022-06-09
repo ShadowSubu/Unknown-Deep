@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
             case GameState.gameStart:
                 break;
             case GameState.respawn:
+                WorldManager.instance.checkPoint.Respawn();
                 break;
             case GameState.levelSuccess:
                 break;

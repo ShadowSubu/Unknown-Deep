@@ -7,6 +7,7 @@ TagManager:
   - Level
   - BiomeTwoCheckpoint
   - BiomeThreeCheckpoint
+  - Spikes
   layers:
   - Default
   - TransparentFX

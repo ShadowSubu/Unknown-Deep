@@ -32,7 +32,8 @@ public class CheckPoints : MonoBehaviour
     private void SetTransform(Transform target)
     {
         WorldManager.instance.submarine.transform.position = target.transform.position;
-        WorldManager.instance.submarine.transform.rotation = Quaternion.Euler(0, 0, 0);
+        WorldManager.instance.submarine.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+        //WorldManager.instance.submarine.transform.Rotate(Vector3.zero);
     }
 
     public void ReachedCheckPointOne()
