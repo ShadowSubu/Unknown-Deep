@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class SubmarineController : MonoBehaviour
     public float stabilizationSpeed;
     float turbineSpeed;
     private float currentSpeed;
+    public int maxHealth;
+    public int currentHealth;
 
     [SerializeField] Transform turbineRing;
 
@@ -29,9 +32,15 @@ public class SubmarineController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        WorldManager.instance.submarine = gameObject;
     }
 
     void FixedUpdate()
+    {
+        SubmarineMovement();
+    }
+
+    private void SubmarineMovement()
     {
         float horizontolInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
@@ -77,5 +86,34 @@ public class SubmarineController : MonoBehaviour
         turbineRing.Rotate(Vector3.forward, currentSpeed);
 
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.Euler(new Vector3(0, rb.rotation.eulerAngles.y, 0)), stabilizationSpeed));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BiomeTwoCheckpoint"))
+        {
+            WorldManager.instance.checkPoint.ReachedCheckPointOne();
+        }
+        else if (other.CompareTag("BiomeThreeCheckpoint"))
+        {
+            WorldManager.instance.checkPoint.ReachedCheckPointTwo();
+        }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            currentHealth -= damageAmount;
+        }
+    }
+
+    private void Die()
+    {
+        
     }
 }
