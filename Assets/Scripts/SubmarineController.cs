@@ -2,23 +2,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SubmarineController : MonoBehaviour
 {
     private Rigidbody rb;
 
+    [Header("Submarine Variables")]
     public float subSpeed;
     public float turnSpeed;
     public float rotationSpeed;
     public float stabilizationSpeed;
-    float turbineSpeed;
-    private float currentSpeed;
     public int maxHealth;
     public int currentHealth;
+    float turbineSpeed;
+    private float currentSpeed;
     bool canMove = true;
 
     [SerializeField] Transform turbineRing;
 
+    [Header("Arms")]
+    [SerializeField] GameObject grabArm;
+    [SerializeField] GameObject drillArm;
+    [SerializeField] GameObject bladeArm;
+    [SerializeField] GameObject grabArmArmature;
+    [SerializeField] GameObject drillArmArmature;
+    [SerializeField] GameObject bladeArmArmature;
+
+    #region Fixed Variables
     private static Vector3 forward = new Vector3(0f,0f,0f);
     private static Vector3 backward = new Vector3(0f,179f,0f);
     private static Vector3 upward = new Vector3(-40f, 0f, 0f);
@@ -27,6 +38,7 @@ public class SubmarineController : MonoBehaviour
     private static Quaternion b = Quaternion.Euler(backward.x, backward.y, backward.z);
     private static Quaternion u = Quaternion.Euler(upward.x, upward.y, upward.z);
     private static Quaternion d = Quaternion.Euler(downward.x, downward.y, downward.z);
+    #endregion
 
     void Start()
     {
@@ -38,6 +50,11 @@ public class SubmarineController : MonoBehaviour
     void FixedUpdate()
     {
         SubmarineMovement();
+    }
+
+    private void Update()
+    {
+        HandleArm();
     }
 
     private void SubmarineMovement()
@@ -89,6 +106,62 @@ public class SubmarineController : MonoBehaviour
 
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.Euler(new Vector3(0, rb.rotation.eulerAngles.y, 0)), stabilizationSpeed));
         }
+    }
+
+    void HandleArm()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (grabArm.activeSelf)
+            {
+                RetractAllArms();
+            }
+            else
+            {
+                ArmOpenAnimation(grabArm, grabArmArmature);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (drillArm.activeSelf)
+            {
+                RetractAllArms();
+            }
+            else
+            {
+                ArmOpenAnimation(drillArm, drillArmArmature);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (bladeArm.activeSelf)
+            {
+                RetractAllArms();
+            }
+            else
+            {
+                ArmOpenAnimation(bladeArm, bladeArmArmature);
+            }
+        }
+    }
+
+    void RetractAllArms()
+    {
+        grabArm.SetActive(false);
+        drillArm.SetActive(false);
+        bladeArm.SetActive(false);
+    }
+
+    void ArmOpenAnimation(GameObject arm, GameObject armature)
+    {
+        RetractAllArms();
+        Sequence grabArmOpen = DOTween.Sequence();
+        grabArmOpen.Append(armature.transform.DOScale(new Vector3(0.2f, 0.2f, 0.2f), 0.1f));
+        grabArmOpen.OnComplete(() =>
+        {
+            arm.SetActive(true);
+            grabArmOpen.Append(armature.transform.DOScale(new Vector3(1f, 1f, 1f), 3f));
+        });
     }
 
     private void OnTriggerEnter(Collider other)

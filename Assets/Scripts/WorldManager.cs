@@ -18,4 +18,8 @@ public class WorldManager : MonoBehaviour
     {
         instance = this;
     }
+    private void Start()
+    {
+        health.fillAmount = 1f;
+    }
 }
