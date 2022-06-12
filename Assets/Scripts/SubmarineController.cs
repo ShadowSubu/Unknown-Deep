@@ -20,6 +20,7 @@ public class SubmarineController : MonoBehaviour
     bool canMove = true;
 
     [SerializeField] Transform turbineRing;
+    [SerializeField] ParticleSystem bubbles;
 
     [Header("Arms")]
     [SerializeField] GameObject grabArm;
@@ -69,15 +70,18 @@ public class SubmarineController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, f, rotationSpeed * Time.deltaTime);
                 currentSpeed = subSpeed;
+                bubbles.Play();
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, b, rotationSpeed * Time.deltaTime);
                 currentSpeed = subSpeed;
+                bubbles.Play();
             }
             else
             {
                 currentSpeed = Mathf.Lerp(currentSpeed, 0, 0.01f);
+                bubbles.Stop();
             }
 
             if (Input.GetKey(KeyCode.W))
@@ -205,6 +209,7 @@ public class SubmarineController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Level"))
         {
+            Debug.Log(1);
             TakeDamage(WorldManager.instance.wallDamage);
         }
         else if (collision.gameObject.CompareTag("Spikes"))
