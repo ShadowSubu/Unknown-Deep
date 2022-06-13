@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class SubmarineController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class SubmarineController : MonoBehaviour
     float turbineSpeed;
     private float currentSpeed;
     bool canMove = true;
+    bool canUseTool = true;
+    public float cameraShakeIntensity;
+    public float cameraShakeTime;
 
     [SerializeField] Transform turbineRing;
     [SerializeField] ParticleSystem bubbles;
@@ -30,6 +34,11 @@ public class SubmarineController : MonoBehaviour
     [SerializeField] GameObject drillArmArmature;
     [SerializeField] GameObject bladeArmArmature;
 
+    [Header("Icons")]
+    [SerializeField] Image grabArmIcon;
+    [SerializeField] Image drillArmIcon;
+    [SerializeField] Image bladeArmIcon;
+
     #region Fixed Variables
     private static Vector3 forward = new Vector3(0f,0f,0f);
     private static Vector3 backward = new Vector3(0f,179f,0f);
@@ -39,6 +48,10 @@ public class SubmarineController : MonoBehaviour
     private static Quaternion b = Quaternion.Euler(backward.x, backward.y, backward.z);
     private static Quaternion u = Quaternion.Euler(upward.x, upward.y, upward.z);
     private static Quaternion d = Quaternion.Euler(downward.x, downward.y, downward.z);
+
+    private Color unselected = new Color(1f, 1f, 1f, 0.02f);
+    private Color selected = new Color(1f, 1f, 1f, 1f);
+
     #endregion
 
     void Start()
@@ -46,6 +59,7 @@ public class SubmarineController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
         WorldManager.instance.submarine = gameObject;
+        RetractAllArms();
     }
 
     void FixedUpdate()
@@ -114,7 +128,7 @@ public class SubmarineController : MonoBehaviour
 
     void HandleArm()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && canUseTool)
         {
             if (grabArm.activeSelf)
             {
@@ -122,10 +136,12 @@ public class SubmarineController : MonoBehaviour
             }
             else
             {
+                canUseTool = false;
                 ArmOpenAnimation(grabArm, grabArmArmature);
+                grabArmIcon.color = selected;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && canUseTool)
         {
             if (drillArm.activeSelf)
             {
@@ -133,10 +149,13 @@ public class SubmarineController : MonoBehaviour
             }
             else
             {
+                canUseTool = false;
                 ArmOpenAnimation(drillArm, drillArmArmature);
+                drillArmIcon.color = selected;
+
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && canUseTool)
         {
             if (bladeArm.activeSelf)
             {
@@ -144,7 +163,10 @@ public class SubmarineController : MonoBehaviour
             }
             else
             {
+                canUseTool = false;
                 ArmOpenAnimation(bladeArm, bladeArmArmature);
+                bladeArmIcon.color = selected;
+
             }
         }
     }
@@ -154,6 +176,9 @@ public class SubmarineController : MonoBehaviour
         grabArm.SetActive(false);
         drillArm.SetActive(false);
         bladeArm.SetActive(false);
+        grabArmIcon.color = unselected;
+        drillArmIcon.color = unselected;
+        bladeArmIcon.color = unselected;
     }
 
     void ArmOpenAnimation(GameObject arm, GameObject armature)
@@ -164,7 +189,8 @@ public class SubmarineController : MonoBehaviour
         grabArmOpen.OnComplete(() =>
         {
             arm.SetActive(true);
-            grabArmOpen.Append(armature.transform.DOScale(new Vector3(1f, 1f, 1f), 3f));
+            canUseTool = true;
+            grabArmOpen.Append(armature.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f));
         });
     }
 
@@ -185,6 +211,7 @@ public class SubmarineController : MonoBehaviour
         if (currentHealth >= damageAmount)
         {
             currentHealth -= damageAmount;
+            CameraShake.instance.ShakeCamera(cameraShakeIntensity, cameraShakeTime);
             WorldManager.instance.health.fillAmount = (float)currentHealth/(float)maxHealth;
         }
         else
