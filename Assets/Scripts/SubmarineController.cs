@@ -22,6 +22,9 @@ public class SubmarineController : MonoBehaviour
     bool canUseTool = true;
     public float cameraShakeIntensity;
     public float cameraShakeTime;
+    public int fragmentsCollected = 0;
+    public bool drillUnlocked = false;
+    public bool bladeUnlocked = false;
 
     [SerializeField] Transform turbineRing;
     [SerializeField] ParticleSystem bubbles;
@@ -58,7 +61,7 @@ public class SubmarineController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
-        WorldManager.instance.submarine = gameObject;
+        WorldManager.instance.submarine = this;
         RetractAllArms();
     }
 
@@ -141,7 +144,7 @@ public class SubmarineController : MonoBehaviour
                 grabArmIcon.color = selected;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && canUseTool)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && canUseTool && drillUnlocked)
         {
             if (drillArm.activeSelf)
             {
@@ -155,7 +158,7 @@ public class SubmarineController : MonoBehaviour
 
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && canUseTool)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && canUseTool && bladeUnlocked)
         {
             if (bladeArm.activeSelf)
             {

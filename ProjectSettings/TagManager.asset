@@ -10,6 +10,8 @@ TagManager:
   - Spikes
   - Mine
   - Clam
+  - Vine
+  - Blockade
   layers:
   - Default
   - TransparentFX
