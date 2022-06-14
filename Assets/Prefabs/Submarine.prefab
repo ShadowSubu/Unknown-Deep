@@ -1916,6 +1916,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1829003632953715204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8612964907684458206}
+  - component: {fileID: 9210995987799974665}
+  m_Layer: 0
+  m_Name: Action radius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8612964907684458206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829003632953715204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.54, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6792886808769395256}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &9210995987799974665
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829003632953715204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2214134398976401035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,6 +3921,7 @@ Transform:
   - {fileID: 6471558258150406490}
   - {fileID: 5115689313767390047}
   - {fileID: 5647934683256425533}
+  - {fileID: 8612964907684458206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3947,13 +3993,19 @@ MonoBehaviour:
   stabilizationSpeed: 0.1
   maxHealth: 50
   currentHealth: 0
+  cameraShakeIntensity: 0
+  cameraShakeTime: 0
   turbineRing: {fileID: 6672318890369055153}
+  bubbles: {fileID: 0}
   grabArm: {fileID: 0}
   drillArm: {fileID: 0}
   bladeArm: {fileID: 0}
   grabArmArmature: {fileID: 0}
   drillArmArmature: {fileID: 0}
   bladeArmArmature: {fileID: 0}
+  grabArmIcon: {fileID: 0}
+  drillArmIcon: {fileID: 0}
+  bladeArmIcon: {fileID: 0}
 --- !u!1 &6237436152670170663
 GameObject:
   m_ObjectHideFlags: 0

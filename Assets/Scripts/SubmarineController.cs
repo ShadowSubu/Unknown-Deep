@@ -27,9 +27,9 @@ public class SubmarineController : MonoBehaviour
     [SerializeField] ParticleSystem bubbles;
 
     [Header("Arms")]
-    [SerializeField] GameObject grabArm;
-    [SerializeField] GameObject drillArm;
-    [SerializeField] GameObject bladeArm;
+    public GameObject grabArm;
+    public GameObject drillArm;
+    public GameObject bladeArm;
     [SerializeField] GameObject grabArmArmature;
     [SerializeField] GameObject drillArmArmature;
     [SerializeField] GameObject bladeArmArmature;
@@ -236,12 +236,15 @@ public class SubmarineController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Level"))
         {
-            Debug.Log(1);
             TakeDamage(WorldManager.instance.wallDamage);
         }
         else if (collision.gameObject.CompareTag("Spikes"))
         {
             TakeDamage(WorldManager.instance.spikeDamage);
+        }
+        else if (collision.gameObject.CompareTag("Mine"))
+        {
+            TakeDamage(currentHealth + 1);
         }
 
         if (collision.gameObject.CompareTag("BiomeTwoCheckpoint"))

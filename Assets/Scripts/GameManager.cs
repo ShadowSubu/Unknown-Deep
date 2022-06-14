@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     public GameState gameState;
+    public bool isStart = true;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
             case GameState.levelSuccess:
                 break;
             case GameState.gameOver:
+                SceneManager.LoadScene(1);
                 break;
             default:
                 break;

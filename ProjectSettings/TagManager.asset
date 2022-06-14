@@ -8,6 +8,8 @@ TagManager:
   - BiomeTwoCheckpoint
   - BiomeThreeCheckpoint
   - Spikes
+  - Mine
+  - Clam
   layers:
   - Default
   - TransparentFX
