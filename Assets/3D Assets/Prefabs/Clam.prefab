@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7258812323561360689}
   m_Layer: 0
   m_Name: Clam
-  m_TagString: Clam
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 6571649789206074651}
   m_Layer: 0
   m_Name: Clam
-  m_TagString: Clam
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,6 +455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431499129208176494, guid: 4689a78daa0bfee4a821ce5e8551ff24,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5431499129208176495, guid: 4689a78daa0bfee4a821ce5e8551ff24,
         type: 3}

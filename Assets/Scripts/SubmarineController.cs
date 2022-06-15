@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 public class SubmarineController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class SubmarineController : MonoBehaviour
     [SerializeField] Image grabArmIcon;
     [SerializeField] Image drillArmIcon;
     [SerializeField] Image bladeArmIcon;
+    public TextMeshProUGUI fragmentsText;
 
     #region Fixed Variables
     private static Vector3 forward = new Vector3(0f,0f,0f);
@@ -61,6 +63,7 @@ public class SubmarineController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
+        fragmentsText.text = 0.ToString();
         WorldManager.instance.submarine = this;
         RetractAllArms();
     }

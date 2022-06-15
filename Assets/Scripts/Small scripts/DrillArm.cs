@@ -6,9 +6,10 @@ public class DrillArm : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Blockade"))
+        if (other.gameObject.CompareTag("Blockade") && WorldManager.instance.submarine.drillArm.activeSelf == true)
         {
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            Destroy(other.gameObject);
         }
     }
 }

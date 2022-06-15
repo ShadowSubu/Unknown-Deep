@@ -7,6 +7,23 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitoinTime = 1f;
+    [SerializeField] OptionMenu option;
+
+    private void Start()
+    {
+        if (WorldManager.instance != null)
+        {
+            WorldManager.instance.loader = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            option.gameObject.SetActive(true);
+        }
+    }
 
     public void LoadMenu()
     {

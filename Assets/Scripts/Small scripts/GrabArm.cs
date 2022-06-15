@@ -9,6 +9,7 @@ public class GrabArm : MonoBehaviour
         if (other.CompareTag("Clam"))
         {
             WorldManager.instance.submarine.fragmentsCollected++;
+            WorldManager.instance.submarine.fragmentsText.text = WorldManager.instance.submarine.fragmentsCollected.ToString();
             Destroy(other.gameObject);
 
             if (WorldManager.instance.submarine.fragmentsCollected >= 4)

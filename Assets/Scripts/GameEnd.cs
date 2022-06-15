@@ -15,7 +15,8 @@ public class GameEnd : MonoBehaviour
     IEnumerator End()
     {
         GameManager.instance.isStart = false;
-        yield return new WaitForSeconds(1);
+        WorldManager.instance.loader.transition.SetTrigger("start");
+        yield return new WaitForSeconds(WorldManager.instance.loader.transitoinTime);
         GameManager.instance.ChangeState(GameState.gameOver);
     }
 }

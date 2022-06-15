@@ -13,6 +13,7 @@ public class WorldManager : MonoBehaviour
     public Image health;
     public int wallDamage;
     public int spikeDamage;
+    public LevelLoader loader;
 
     private void Awake()
     {
