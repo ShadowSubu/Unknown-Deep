@@ -10,6 +10,7 @@ public class GrabArm : MonoBehaviour
         {
             WorldManager.instance.submarine.fragmentsCollected++;
             WorldManager.instance.submarine.fragmentsText.text = WorldManager.instance.submarine.fragmentsCollected.ToString();
+            WorldManager.instance.fragmentCollectionSound.Play();
             Destroy(other.gameObject);
 
             if (WorldManager.instance.submarine.fragmentsCollected >= 4)

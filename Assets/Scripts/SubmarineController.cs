@@ -19,7 +19,7 @@ public class SubmarineController : MonoBehaviour
     public int currentHealth;
     float turbineSpeed;
     private float currentSpeed;
-    bool canMove = true;
+    public bool canMove = true;
     bool canUseTool = true;
     public float cameraShakeIntensity;
     public float cameraShakeTime;
@@ -29,6 +29,8 @@ public class SubmarineController : MonoBehaviour
 
     [SerializeField] Transform turbineRing;
     [SerializeField] ParticleSystem bubbles;
+    [SerializeField] AudioSource submarineSound;
+    [SerializeField] AudioSource damageSound;
 
     [Header("Arms")]
     public GameObject grabArm;
@@ -62,6 +64,7 @@ public class SubmarineController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        submarineSound.Pause();
         currentHealth = maxHealth;
         fragmentsText.text = 0.ToString();
         WorldManager.instance.submarine = this;
@@ -91,17 +94,28 @@ public class SubmarineController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, f, rotationSpeed * Time.deltaTime);
                 currentSpeed = subSpeed;
                 bubbles.Play();
+                //if (!submarineSound.isPlaying)
+                //{
+                //    submarineSound.Play();
+                //}
+                submarineSound.UnPause();
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, b, rotationSpeed * Time.deltaTime);
                 currentSpeed = subSpeed;
                 bubbles.Play();
+                //if (!submarineSound.isPlaying)
+                //{
+                //    submarineSound.Play();
+                //}
+                submarineSound.UnPause();
             }
             else
             {
                 currentSpeed = Mathf.Lerp(currentSpeed, 0, 0.01f);
                 bubbles.Stop();
+                submarineSound.Pause();
             }
 
             if (Input.GetKey(KeyCode.W))
@@ -217,6 +231,10 @@ public class SubmarineController : MonoBehaviour
         if (currentHealth >= damageAmount)
         {
             currentHealth -= damageAmount;
+            if (!damageSound.isPlaying)
+            {
+                damageSound.Play();
+            }
             CameraShake.instance.ShakeCamera(cameraShakeIntensity, cameraShakeTime);
             WorldManager.instance.health.fillAmount = (float)currentHealth/(float)maxHealth;
         }
@@ -251,6 +269,7 @@ public class SubmarineController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Mine"))
         {
             TakeDamage(currentHealth + 1);
+            collision.gameObject.GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.CompareTag("BiomeTwoCheckpoint"))

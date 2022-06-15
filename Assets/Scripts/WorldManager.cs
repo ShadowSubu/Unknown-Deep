@@ -13,7 +13,9 @@ public class WorldManager : MonoBehaviour
     public Image health;
     public int wallDamage;
     public int spikeDamage;
+    public int volcanoDamage;
     public LevelLoader loader;
+    public AudioSource fragmentCollectionSound;
 
     private void Awake()
     {
