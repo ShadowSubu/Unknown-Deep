@@ -277,6 +277,7 @@ public class SubmarineController : MonoBehaviour
         {
             TakeDamage(currentHealth + 1);
             collision.gameObject.GetComponent<AudioSource>().Play();
+            collision.gameObject.GetComponent<ParticleSystem>().Play();
         }
 
         if (collision.gameObject.CompareTag("BiomeTwoCheckpoint"))

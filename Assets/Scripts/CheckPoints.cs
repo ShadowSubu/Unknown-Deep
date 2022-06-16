@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CheckPoints : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] Transform biomeOneRespawnPoint;
     [SerializeField] Transform biomeTwoRespawnPoint;
     [SerializeField] Transform biomeThreeRespawnPoint;
+    [SerializeField] RectTransform checkPointReachedText;
 
     bool checkpointOne = false;
     bool checkpointTwo = false;
@@ -38,11 +40,33 @@ public class CheckPoints : MonoBehaviour
 
     public void ReachedCheckPointOne()
     {
-        checkpointOne = true;
+        if (!checkpointOne)
+        {
+            checkpointOne = true;
+            CheckPointAnim();
+        }
     }
 
     public void ReachedCheckPointTwo()
     {
-        checkpointTwo = true;
+        if (!checkpointTwo)
+        {
+            checkpointTwo = true;
+            CheckPointAnim();
+        }
+    }
+
+    void CheckPointAnim()
+    {
+        checkPointReachedText.DOAnchorPos(new Vector2(2500f, 0f), 0f).OnComplete(() =>
+        {
+            checkPointReachedText.DOAnchorPos(new Vector2(0f, 0f), 0.5f).OnComplete(() =>
+            {
+                checkPointReachedText.DOAnchorPos(new Vector2(0f, 0f), 1f).OnComplete(() =>
+                {
+                    checkPointReachedText.DOAnchorPos(new Vector2(-2500f, 0f), 0.5f);
+                });
+            });
+        });
     }
 }

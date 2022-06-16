@@ -18,6 +18,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     int lineNumber = 0;
 
+    [SerializeField] LevelLoader loader;
+
     private void Awake()
     {
         if (!GameManager.instance.isStart)
@@ -45,7 +47,7 @@ public class DialogueSystem : MonoBehaviour
             lineNumber++;
             if (lineNumber > startingLines.Count - 1)
             {
-                SceneManager.LoadScene(2);
+                loader.LoadGame();
             }
             else
             {

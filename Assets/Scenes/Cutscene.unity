@@ -1015,6 +1015,7 @@ MonoBehaviour:
   startingVideo: {fileID: 32900000, guid: 96601a967589c3541acf4f0e5430229c, type: 3}
   endingVideo: {fileID: 32900000, guid: 6e966913218eba4459a6582ddae3da52, type: 3}
   videoPlayer: {fileID: 1559725153}
+  loader: {fileID: 2063618591}
 --- !u!1001 &2063618590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,3 +1085,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8cd68c42deb89f4f9d1097abe7d05d4, type: 3}
+--- !u!114 &2063618591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4532267323604172180, guid: d8cd68c42deb89f4f9d1097abe7d05d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 2063618590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31dcd3e56b47e2468094b619f0f0942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
