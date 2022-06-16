@@ -31,6 +31,7 @@ public class SubmarineController : MonoBehaviour
     [SerializeField] ParticleSystem bubbles;
     [SerializeField] AudioSource submarineSound;
     [SerializeField] AudioSource damageSound;
+    [SerializeField] DrillArm drillArmScript;
 
     [Header("Arms")]
     public GameObject grabArm;
@@ -172,7 +173,7 @@ public class SubmarineController : MonoBehaviour
                 canUseTool = false;
                 ArmOpenAnimation(drillArm, drillArmArmature);
                 drillArmIcon.color = selected;
-
+                InvokeRepeating(nameof(DrillAction), 1f, 1f);
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && canUseTool && bladeUnlocked)
@@ -199,6 +200,12 @@ public class SubmarineController : MonoBehaviour
         grabArmIcon.color = unselected;
         drillArmIcon.color = unselected;
         bladeArmIcon.color = unselected;
+        CancelInvoke();
+    }
+
+    void DrillAction()
+    {
+        drillArmScript.DrillAction();
     }
 
     void ArmOpenAnimation(GameObject arm, GameObject armature)

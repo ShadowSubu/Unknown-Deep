@@ -7831,6 +7831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9712a088b97d641aba3c0e3e1a52c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotatingPart: {fileID: 0}
 --- !u!1 &4219485947521339901
 GameObject:
   m_ObjectHideFlags: 0
@@ -8379,6 +8380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ce21518b122dc448a677778cd3de48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotatingPart: {fileID: 0}
 --- !u!1 &5452520927502331078
 GameObject:
   m_ObjectHideFlags: 0
@@ -8846,6 +8848,7 @@ MonoBehaviour:
   stabilizationSpeed: 0.1
   maxHealth: 50
   currentHealth: 0
+  canMove: 1
   cameraShakeIntensity: 2
   cameraShakeTime: 0.2
   fragmentsCollected: 0
@@ -10480,6 +10483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9712a088b97d641aba3c0e3e1a52c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotatingPart: {fileID: 8640995275518975156}
 --- !u!1 &8570041087510883655
 GameObject:
   m_ObjectHideFlags: 0
