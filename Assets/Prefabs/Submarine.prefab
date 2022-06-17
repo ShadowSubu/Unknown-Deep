@@ -724,7 +724,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 742a342417c2ee4419b7ef76966e772a, type: 2}
+  - {fileID: 2100000, guid: 63c3bde628b5ba243b8baa35b24e5ddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -916,7 +916,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c63a05db98c2fe84bb6f15dfe9859125, type: 2}
+  - {fileID: 2100000, guid: a9f6cd6b28d406f4fb205d31f3ca119f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1746,7 +1746,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -0.6
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5065,13 +5065,13 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5125,7 +5125,7 @@ ParticleSystem:
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
-    worldSpace: 0
+    worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
@@ -5137,7 +5137,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.4764151, g: 0.9286945, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5900,6 +5900,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a56e2e4e28f22cf41b7d0b9b0a451e67, type: 2}
+  - {fileID: 2100000, guid: 2ea3861807b4b6244b88032ac698f700, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6723,7 +6724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829003632953715204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 2.1}
+  m_LocalPosition: {x: 0, y: -1.38, z: 2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6741,7 +6742,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1814002089
 MonoBehaviour:
@@ -6876,7 +6877,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c63a05db98c2fe84bb6f15dfe9859125, type: 2}
+  - {fileID: 2100000, guid: a9f6cd6b28d406f4fb205d31f3ca119f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6933,7 +6934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5702617140686179520
 Transform:
   m_ObjectHideFlags: 0
@@ -7448,7 +7449,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 742a342417c2ee4419b7ef76966e772a, type: 2}
+  - {fileID: 2100000, guid: 63c3bde628b5ba243b8baa35b24e5ddf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7540,7 +7541,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c63a05db98c2fe84bb6f15dfe9859125, type: 2}
+  - {fileID: 2100000, guid: a9f6cd6b28d406f4fb205d31f3ca119f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7725,14 +7726,13 @@ GameObject:
   - component: {fileID: 884347490014518966}
   - component: {fileID: 4430799037390975632}
   - component: {fileID: 190591458}
-  - component: {fileID: 190591457}
   m_Layer: 0
   m_Name: Blade Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &884347490014518966
 Transform:
   m_ObjectHideFlags: 0
@@ -7819,19 +7819,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &190591457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4142557117686925268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9712a088b97d641aba3c0e3e1a52c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotatingPart: {fileID: 0}
 --- !u!1 &4219485947521339901
 GameObject:
   m_ObjectHideFlags: 0
@@ -8262,7 +8249,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5272557443177480231}
-  m_LocalRotation: {x: 1.2434506e-14, y: -7.1054274e-15, z: -2.8967985e-15, w: 1}
+  m_LocalRotation: {x: 1.2435907e-14, y: -7.106228e-15, z: -2.8971248e-15, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.7599939}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8380,7 +8367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ce21518b122dc448a677778cd3de48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingPart: {fileID: 0}
+  target: {fileID: 6471558258150406489}
 --- !u!1 &5452520927502331078
 GameObject:
   m_ObjectHideFlags: 0
@@ -8856,8 +8843,9 @@ MonoBehaviour:
   bladeUnlocked: 0
   turbineRing: {fileID: 6672318890369055153}
   bubbles: {fileID: 1569545661}
-  submarineSound: {fileID: 0}
-  damageSound: {fileID: 0}
+  submarineSound: {fileID: 1859111365727431900}
+  damageSound: {fileID: 5771544767796034295}
+  drillArmScript: {fileID: 6007210692250226601}
   grabArm: {fileID: 5636529479660197168}
   drillArm: {fileID: 2608869882245785435}
   bladeArm: {fileID: 4142557117686925268}
@@ -8879,10 +8867,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 729285d9e2abe684591661d9eb892f8f, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8974,10 +8962,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 34c3c31330cc21b4eac7ee387c93f379, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4999d02ed3209f549a16f0b85d65b6e5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -9143,7 +9131,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c63a05db98c2fe84bb6f15dfe9859125, type: 2}
+  - {fileID: 2100000, guid: a9f6cd6b28d406f4fb205d31f3ca119f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9793,6 +9781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2e4c30b7c1e764180b119c772f4c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bladeToolUnlockText: {fileID: 0}
+  drillToolUnlockText: {fileID: 0}
 --- !u!1 &7540787683834905943
 GameObject:
   m_ObjectHideFlags: 0

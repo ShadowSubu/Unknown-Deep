@@ -57,7 +57,7 @@ public class DialogueSystem : MonoBehaviour
 
         if (!GameManager.instance.isStart)
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
     }
 
