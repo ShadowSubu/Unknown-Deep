@@ -25,7 +25,7 @@ public class Volcano : MonoBehaviour
 
     IEnumerator StopVolcano()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         boxCollider.enabled = true;
         yield return new WaitForSeconds(pauseInterval);
         volcanoParticle.Stop();

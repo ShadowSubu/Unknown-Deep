@@ -16,6 +16,6 @@ public class BladeArm : MonoBehaviour
 
     private void Update()
     {
-        rotatingPart.transform.Rotate(Vector3.forward, -2f);
+        rotatingPart.transform.Rotate(Vector3.forward, -150f * Time.deltaTime);
     }
 }

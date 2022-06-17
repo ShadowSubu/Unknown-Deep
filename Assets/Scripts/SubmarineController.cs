@@ -57,7 +57,7 @@ public class SubmarineController : MonoBehaviour
     private static Quaternion u = Quaternion.Euler(upward.x, upward.y, upward.z);
     private static Quaternion d = Quaternion.Euler(downward.x, downward.y, downward.z);
 
-    private Color unselected = new Color(1f, 1f, 1f, 0.02f);
+    private Color unselected = new Color(1f, 1f, 1f, 0.05f);
     private Color selected = new Color(1f, 1f, 1f, 1f);
 
     #endregion
@@ -141,7 +141,7 @@ public class SubmarineController : MonoBehaviour
             rb.velocity = movement * currentSpeed;
 
             turbineSpeed = Mathf.Clamp(turbineSpeed, 2f, currentSpeed);
-            turbineRing.Rotate(Vector3.forward, currentSpeed / 4);
+            turbineRing.Rotate(Vector3.forward, currentSpeed * 60 / 4 * Time.deltaTime);
 
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.Euler(new Vector3(0, rb.rotation.eulerAngles.y, 0)), stabilizationSpeed));
         }
@@ -242,6 +242,7 @@ public class SubmarineController : MonoBehaviour
             {
                 damageSound.Play();
             }
+            ShakeHealthBar(WorldManager.instance.healthBar);
             CameraShake.instance.ShakeCamera(cameraShakeIntensity, cameraShakeTime);
             WorldManager.instance.health.fillAmount = (float)currentHealth/(float)maxHealth;
         }
@@ -291,5 +292,11 @@ public class SubmarineController : MonoBehaviour
         }
     }
 
-    
+    void ShakeHealthBar(RectTransform obj)
+    {
+        obj.DOShakeScale(0.2f, 0.2f, 2, 60, true).OnComplete(() =>
+        {
+            obj.localScale = new Vector3(1f, 1f, 1f);
+        });
+    }
 }

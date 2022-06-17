@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class OptionMenu : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class OptionMenu : MonoBehaviour
         }
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(Slider volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        //audioMixer.SetFloat("volume", volume.value);
+        AudioListener.volume = volume.value;
     }
 
     public void SetFullScreen(bool isFullscreen)

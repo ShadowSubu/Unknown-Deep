@@ -40,9 +40,9 @@ public class ArmAction : MonoBehaviour
 
     private void Update()
     {
+        GoToTarget();
         if (Input.GetKey(KeyCode.Space))
         {
-            GoToTarget();
         }
 
         if (reset)

@@ -41,13 +41,20 @@ public class GameManager : MonoBehaviour
             case GameState.levelSuccess:
                 break;
             case GameState.gameOver:
-                SceneManager.LoadScene(1);
+                StartCoroutine(GameEnd());
                 break;
             default:
                 break;
         }
     }
+    IEnumerator GameEnd()
+    {
+        WorldManager.instance.loader.transition.SetTrigger("start");
+        yield return new WaitForSeconds(WorldManager.instance.loader.transitoinTime);
+        SceneManager.LoadScene(1);
+    }
 }
+
 
 public enum GameState
 {

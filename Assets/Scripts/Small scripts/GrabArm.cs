@@ -10,7 +10,7 @@ public class GrabArm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Clam"))
+        if (other.CompareTag("Clam") && WorldManager.instance.submarine.grabArm.activeSelf == true)
         {
             WorldManager.instance.submarine.fragmentsCollected++;
             WorldManager.instance.submarine.fragmentsText.text = WorldManager.instance.submarine.fragmentsCollected.ToString();
